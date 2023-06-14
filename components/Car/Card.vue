@@ -3,7 +3,7 @@
     class="relative shadow border w-full overflow-hidden mb-5 cursor-pointer h-[200px]"
     @click="navigateTo(`/car/${car.name}-${car.id}`)"
   >
-  <img @click.right="emit('favor' , car.id)" class="absolute w-7 right-5 top-2 z-20" :src="favored ? heartFilled : heartOutline" alt="">
+  <img @click.right="emit('favor' , car.id)" class="absolute w-7 right-1 top-2 z-20" :src="favored ? heartFilled : heartOutline" alt="">
     <div class="flex h-full">
       <NuxtImg :src="car.url" alt="" class="w-[300px] h-full" />
       <div class="p-4 flex flex-col">
@@ -29,7 +29,5 @@ const props = defineProps({
 });
 
 const emit=  defineEmits(['favor'])
-// const favored = useState(`favored-${props.car.id}`, ()=>{
-//   return false
-// })
+
 </script>
