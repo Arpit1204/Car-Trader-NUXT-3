@@ -15,13 +15,7 @@
             </div>
 
         </div>
-        {{ info.year }}
-        {{ info.model }}
-        {{ info.seats }}
-        {{ info.city }}
-        {{ info.miles }}
-        {{ info.features }}
-        {{ info.description }}{{ info.image }}
+        
 
     </div>
 </template>
@@ -29,7 +23,10 @@
 <script setup>
 const { makes } = useCars()
 definePageMeta({
-    layout: 'custom'
+    layout: 'custom',
+    middleware:[
+        "auth"
+]
 })
 
 const info = useState('addInfo', () => {
@@ -49,6 +46,7 @@ const info = useState('addInfo', () => {
 
 const onChangeInput = (data, name) => {
     info.value[name] = data
+    console.log(info.value.image);
 }
 
 const inputs = [

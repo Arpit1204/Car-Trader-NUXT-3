@@ -1,7 +1,7 @@
 <template>
     <div class="shadow border w-96 mr-10 z-30 h-[190px]">
       <!-- Location -->
-      <div class="py-5 px-2 w-48 flex justify-between relative cursor-pointer border-b">
+      <div class="py-5 px-2  flex justify-between relative cursor-pointer border-b">
         <h3>Location</h3>
         <h3 @click="updateModal('location')" class="text-blue-400 capitalize">{{ route.params.city }}</h3>
         <div

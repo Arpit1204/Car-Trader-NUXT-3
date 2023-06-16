@@ -10,15 +10,11 @@
 <script setup>
 
 const route = useRoute();
+const { data : car} = await useFetchCar(route.params.id)
 const {toTitleCase}  = useUtilities()
-const {cars} = useCars()
 
-const car = computed(()=>{
-return cars.find((e)=>{
-  return e.id === parseInt(route.params.id)
-})
 
-})
+
 
 if(!car.value){
   throw createError({
