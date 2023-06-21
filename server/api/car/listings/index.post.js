@@ -27,12 +27,12 @@ const body = await readBody(event)
 
 const {error, value} = await schema.validate(body)
 
-// if(error){
-//     throw createError({
-//         error:412,
-//         statusMessage:error.message
-//     })
-// }
+if(error){
+    throw createError({
+        error:412,
+        statusMessage:error.message
+    })
+}
 
 const {
     image,
