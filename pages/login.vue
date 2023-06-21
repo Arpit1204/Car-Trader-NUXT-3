@@ -1,47 +1,40 @@
 <template>
-    <div class="mt-10">
-       
-        <h1 class="text-5xl font-bold mb-7">Log In!!!</h1>
-            <button @click="login" class="bg-red-400 p-3 rounded text-white font-bold">
-                Login With Google
-            </button>
-
-            <h1 class="text-5xl font-bold mb-7">Log In!!!</h1>
-            <button @click="logina" class="bg-red-400 p-3 rounded text-white font-bold">
-                Login With Github
-            </button>
-        
+  <div class="mt-10 flex w-full justify-between">
+    <div class="text-center" w-full>
+      <h1 class="text-5xl font-bold mb-7">Google Login!!</h1>
+      <button
+        @click="login('google')"
+        class="bg-red-400 p-3 rounded text-white font-bold"
+      >
+        Login With Google
+      </button>
     </div>
+    <div class="text-center" w-full>
+      <h1 class="text-5xl font-bold mb-7">Github Login!!</h1>
+      <button
+        @click="login('github')"
+        class="bg-red-400 p-3 rounded text-white font-bold"
+      >
+        Login With Github
+      </button>
+    </div>
+  </div>
 </template>
 
 <script setup>
 definePageMeta({
-    layout:'custom'
-})
+  layout: "custom",
+});
 
-const supabase = useSupabaseClient()
+const supabase = useSupabaseClient();
 
-const user = useSupabaseUser()
+const login = async (provider) => {
+  const { error } = supabase.auth.signInWithOAuth({
+    provider: provider,
+  });
 
-const login = async() =>{
-const {error} = supabase.auth.signInWithOAuth({
-    provider:"google"
-})
-
-if(error){
+  if (error) {
     console.log(error);
-}
-}
-
-const logina = async() =>{
-const {error} = supabase.auth.signInWithOAuth({
-    provider:"github"
-})
-
-if(error){
-    console.log(error);
-}
-}
-
-
+  }
+};
 </script>
