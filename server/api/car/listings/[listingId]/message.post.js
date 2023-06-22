@@ -12,11 +12,12 @@ const schema = Joi.object({
 })
 
 export default defineEventHandler(async(event)=>{
-    const body = readBody(event)
+
+    const body = await readBody(event)
 
     const {listingId} = event.context.params
 
-    const {error} = await schema.validate(body)
+    const {error, value} = await schema.validate(body)
 
     if(error){
         throw createError({
@@ -26,14 +27,14 @@ export default defineEventHandler(async(event)=>{
     }
 
 
-    const {message, email, phone, name} = body
+    const {email,  phone, name, message} = body
     const mess = prisma.message.create({
         data:{
-            message,
-            name,
             email,
             phone,
-            listingId:parseInt(listingId)
+            name,
+            message,
+            listingId:parseInt(listingId),
         }
     })
     return mess
