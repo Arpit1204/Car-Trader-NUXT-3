@@ -46,6 +46,7 @@ const {
     city,
     make,
     model,
+    year
     
 } = body
 const car = await prisma.car.create({
@@ -61,6 +62,7 @@ const car = await prisma.car.create({
     city:city.toLowerCase(),
     make,
     model,
+    year
     }
 
 })
