@@ -1,7 +1,7 @@
 <template>
     <div class="mt-10">
       <NuxtImg
-        :src="car.image"
+      :src="`${config.public.supabase.url}/storage/v1/object/public/images/${car.image}`"
         class="w-full"
         alt=""
       />
@@ -22,6 +22,8 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig()
+
 const props = defineProps({
   car:Object
 })
